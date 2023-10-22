@@ -42,9 +42,16 @@ namespace IBGE.API.Controllers
 
                 foreach (DataRow line in dt.Rows)
                 {
+                    _ = int.TryParse(line["loc_id"].ToString(), out int id);
+                    string city = line["loc_city"].ToString();
+                    _ = Enum.TryParse(line["loc_state"].ToString(), out State state);
+
+
                     listLocality.Add(new Locality()
                     {
-
+                        Id = id,
+                        City = city,
+                        State = state
                     });
                 }
 
